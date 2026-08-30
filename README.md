@@ -51,12 +51,11 @@ Relay keeps `DATABASE_URL`. The agent receives only the MCP URL and API key.
 
 Relay One ships its own local stdio MCP mode:
 
-```bash
-codex mcp add promptjang-relay-one \
-  --env PJ_ONE_URL=http://127.0.0.1:8081 \
-  --env PJ_ONE_API_KEY=pj_one_YOUR_KEY \
-  -- promptjang-relay-one mcp
-```
+1. Start Relay One and create a `pj_one_` API key.
+2. Open **Integrations** in Relay One.
+3. Select the key and click **Install MCP** for Claude Code, Codex, or OpenCode.
+
+Relay One writes the absolute executable path and local connection settings. It does not configure a default mailbox.
 
 ## Use
 
