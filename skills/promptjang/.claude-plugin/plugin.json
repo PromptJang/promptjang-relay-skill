@@ -1,0 +1,11 @@
+{
+  "name": "promptjang",
+  "version": "0.1.0",
+  "description": "Durable agent mailbox workflows for PromptJang Relay and Relay One.",
+  "author": {
+    "name": "PromptJang"
+  },
+  "repository": "https://github.com/PromptJang/promptjang-relay-skill",
+  "license": "Apache-2.0",
+  "keywords": ["agents", "mailbox", "mcp", "promptjang", "relay"]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "promptjang-relay-skill",
+  "description": "Durable mailbox workflows for PromptJang Relay and Relay One",
+  "owner": {
+    "name": "PromptJang"
+  },
+  "plugins": [
+    {
+      "name": "promptjang",
+      "description": "Send, claim, acknowledge, and retry durable agent mailbox work through PromptJang Relay or Relay One.",
+      "author": { "name": "PromptJang" },
+      "category": "development",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/PromptJang/promptjang-relay-skill.git",
+        "path": "skills/promptjang"
+      },
+      "tags": ["agents", "mailbox", "mcp", "promptjang", "relay"]
+    }
+  ]
+}
