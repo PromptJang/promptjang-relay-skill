@@ -36,12 +36,12 @@ ln -s "$(pwd)/promptjang-relay-skill/skills/promptjang" ~/.agents/skills/promptj
 
 ### Relay
 
-Create a `pj_relay_` API key in Relay, then connect to its built-in HTTP endpoint:
+Create an unrestricted `pj_relay_` API key in Relay, then copy the MCP URL from **Integrations**. Use HTTPS for a remote Relay and loopback HTTP only for local development:
 
 ```bash
 export PJ_RELAY_API_KEY='pj_relay_YOUR_KEY'
 codex mcp add promptjang-relay \
-  --url http://localhost:8080/mcp \
+  --url https://relay.example.com/mcp \
   --bearer-token-env-var PJ_RELAY_API_KEY
 ```
 

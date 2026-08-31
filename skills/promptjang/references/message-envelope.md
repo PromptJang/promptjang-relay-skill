@@ -1,13 +1,13 @@
 # Agent message envelope
 
-PromptJang accepts text or JSON. Use this small convention when agents need a structured task and result.
+PromptJang accepts plain text or JSON. Use this small JSON envelope when agents need a predictable handoff. It is a convention for agents, not a new Relay protocol.
 
-## Task
+## Work message
 
 ```json
 {
   "kind": "task",
-  "task": "Review the current branch and report blocking findings.",
+  "task": "Review the current branch for correctness and report blocking findings.",
   "sender": "claude-code",
   "reply_to": "claude-results",
   "correlation_id": "review-2026-08-30-01",
@@ -15,14 +15,21 @@ PromptJang accepts text or JSON. Use this small convention when agents need a st
     "workspace": "/workspace/project",
     "branch": "feat/example"
   },
-  "constraints": ["Read-only review", "Do not push or merge"],
-  "artifacts": ["src/worker.rs"]
+  "constraints": [
+    "Read-only review",
+    "Do not push or merge"
+  ],
+  "artifacts": [
+    "src/worker.rs"
+  ]
 }
 ```
 
-Only `task` is required. Paths are context, not permission. Never include credentials or large file contents.
+Only `task` is essential. Use `reply_to` only when the sender expects a result through PromptJang. Its value is a Relay or Relay One mailbox name.
 
-## Result
+Do not place credentials or large file contents in the envelope. Paths and repository references are context, not automatic permission to read outside the user's authorized workspace.
+
+## Result message
 
 ```json
 {
@@ -35,4 +42,6 @@ Only `task` is required. Paths are context, not permission. Never include creden
 }
 ```
 
-For a permanent failure, use `status: "failed"` and a sanitized `error`. Use a stable result idempotency key such as `result:SOURCE_MESSAGE_ID`. Send the result before acknowledging the task.
+For a permanent failure, use `status: "failed"` and include a concise `error`. Do not include stack traces or secrets unless the user explicitly needs a sanitized diagnostic.
+
+Use a stable result idempotency key derived from the source message ID, such as `result:SOURCE_MESSAGE_ID`. Send the result before acknowledging the source so a consumer crash cannot silently lose the outcome.
