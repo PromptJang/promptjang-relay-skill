@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="hero-logo.svg" alt="PromptJang" width="160">
+</div>
+
 # PromptJang Agent Skill
 
 Teach CLI agents to exchange durable work through **PromptJang Relay** or **PromptJang Relay One**.
