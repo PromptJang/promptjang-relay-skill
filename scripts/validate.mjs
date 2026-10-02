@@ -8,6 +8,7 @@ const required = [
   ".claude-plugin/plugin.json",
   "references/tool-contracts.md",
   "references/message-envelope.md",
+  "references/agent-message-v1.schema.json",
   "references/safety-boundary.md",
 ];
 
